@@ -1,0 +1,61 @@
+Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
+0,"BLIF Inbound CA Completion Error",RW1CHS,0,"An inbound completion TLP was received with status of completer abort (CA).","Fatal (vA4.1) ER (SINGLE) (vA4.2)"
+1,"BLIF Inbound UR Completion Error",RW1CHS,0,"An inbound completion TLP was received with status of unsupported request (UR).","Fatal (vA4.1) ER (SINGLE) (vA4.2)"
+2,MSI Size Error,RW1CHS,0,"An MSI interrupt was received on the BLIF inbound interface with a size greater than one data beat (16-byte).",Fatal
+3,"MSI Address Alignment Error",RW1CHS,0,"An MSI interrupt was received and was not 16-byte address aligned.",Fatal
+4,Reserved,RW1CHS,0,Reserved.,Fatal
+5,"BLIF Inbound Header ECC Correctable (CE) Error",RW1CHS,0,An ECC CE detected on an inbound BLIF command header.,INF
+6,"BLIF Inbound Header ECC Uncorrectable (UE) Error",RW1CHS,0,An ECC UE detected on an inbound BLIF command header.,Fatal
+7,ARB Stage Valid Error,RW1CHS,0,"More than one stage valid indication was asserted in the same clock cycle.",Fatal
+8,TCE Tag Release Unused,RW1CHS,0,A release of an unused TCE Tag is attempted.,Fatal
+9,"TCE Tag Used, Not Free",RW1CHS,0,An attempt to use a TCE Tag that is already in use.,Fatal
+10,"ARB MMIO Buffer Overflow",RW1CHS,0,A buffer overflow condition.,Fatal
+11,"ARB MMIO Buffer Underflow",RW1CHS,0,A buffer underflow condition.,Fatal
+12,"ARB MMIO Internal Parity Error",RW1CHS,0,An internal logic parity error was detected.,Fatal
+13,"ARB DMA Buffer Overflow",RW1CHS,0,A buffer overflow condition.,Fatal
+14,"ARB DMA Buffer Underflow",RW1CHS,0,A buffer underflow condition.,Fatal
+15,"ARB DMA Internal Parity Error",RW1CHS,0,An internal logic parity error was detected.,Fatal
+16,"BLIF Header Control Bits Parity Error",RW1CHS,0,A parity error was detected on the BLIF header control bits.,Fatal
+17,"BLIF Data Control Bits Parity Error",RW1CHS,0,A parity error was detected on the BLIF data control bits.,Fatal
+18,"BLIF Unsupported Request (UR) Error",RW1CHS,0,"A command was received on the BLIF interface indicating it was an unsupported request. A 'Nonposted' request will be acknowledged with a Comple- tion response with UR status. A 'Posted' request type will be dropped.",INF
+19,"BLIF Completion Timeout Error",RW1CHS,0,"A completion was received on the BLIF interface with a time- out indication. The PCIE/PBL block detected the timeout and reported it via the BLIF interface.",Fatal
+20,"SEID Table ECC Correctable (CE) Error (vA4.1) Secure Address Error (vA4.2)",RW1CHS,0,"An ECC CE detected in the SEID table. (vA4.1). Secure Address Error (vA4.2). Non-translated DMA address matched against secure address checker. Refer to Section 4.7.2.1 UV - Secure Address Exclude CMP/MSK Register on page 295.","INF (vA4.1) ER (SINGLE) (vA4.2)"
+21,"SEID Table ECC Uncorrectable (UE) Error (vA4.1) Reserved (vA4.2)",RW1CHS,0,"An ECC UE detected in the SEID table. (vA4.1). Reserved (vA4.2).",Fatal
+22,NBW Size Error,RW1CHS,0,"A Non-Blocking Write was received on the BLIF inbound interface with invalid size. The legal NBW sizes are 16, 32, 64, and 128B. In addition, the size and address alignment of the transaction must match.",Fatal
+23,DEC IODA Table Fatal Error,RW1CHS,0,"An internal fatal error detected related to the IODA tables inside the DEC block. This covers the MIST, SEID, and TVT tables.",Fatal
+24,TLP Poisoned Error,RW1CHS,0,"A DMA Write was received and its TLP header indicates that the data was poisoned. This includes writes that decode as MSI.","ER (SINGLE)"
+25,"MIST ECC Correctable Error",RW1CHS,0,A correctable ECC error was detected in this table's array.,INF
+26,IODA TVT Entry Invalid,RW1CHS,0,IODA Error: An access to an invalid TVT entry.,"ER (SINGLE)"
+27,MSI PE# Mismatch,RW1CHS,0,"The PE# (as fetched from the RTT) for an MSI did not match the PE# assigned to this Source ID that was stored in the MIST.","ER (SINGLE)"
+28,"IODA TVT Address Range Error",RW1CHS,0,"IODA Error: The PCI Address was out of range as defined by the TTA bounds in the TVE entry. Note: As of POWER9 PHB4, the logic will not flag an error for 32-bit DMAs that are configured as non-translated.",ER (SINGLE)
+29,"TVT ECC Correctable Error",RW1CHS,0,A correctable ECC error was detected in this table's array.,INF
+30,"TVT ECC Uncorrectable Error",RW1CHS,0,"An uncorrectable ECC error was detected in this table's array.",Fatal
+31,"MIST ECC Uncorrectable Error",RW1CHS,0,"An uncorrectable ECC error was detected in this table's array.",Fatal
+32,PELT-V BAR Disabled Error,RW1CHS,0,"An Error Message attempted to access the PELT-V BAR when it was disabled.",Fatal
+33,IODA Table Parity Error,RW1CHS,0,"A parity error occurred in one of the IODA tables in the DEC block.",Fatal
+34,PCT Timeout,RW1CHS,0,"A timeout occurred in the PCT table. A PCI completion was never returned for a PCIe request.",Fatal
+35,"PCT Unexpected Completion",RW1CHS,0,"A PCI completion was received but did not match any out- standing requests.",Fatal
+36,PCT Parity Error,RW1CHS,0,A parity error occurred in the PCI Completion Table.,Fatal
+37,DEC Stage Valid Error,RW1CHS,0,"More than one stage valid indication was asserted in the same clock cycle.",Fatal
+38,DEC Stage Parity Error,RW1CHS,0,A parity error detected in the control pipeline stages.,Fatal
+39,"PAPR Inbound Injection Error Triggered",RW1CHS,0,"The condition set up by the PAPR Error Injection Registers triggered its intended condition to inject an inbound error. This is more of a status than an error, but it can be treated like a normal error.",ER (SINGLE)
+40,"DMA/MSI: RTE PE Number All Ones Error",RW1CHS,0,"The PE number in the RTE was all ones (all 16 bits). This indicates that it is an invalid entry.",INF
+41,RTT BAR Disabled Error,RW1CHS,0,"A request attempted to access the RTT BAR when it was disabled.",Fatal
+42,RTC Internal Parity Error,RW1CHS,0,An internal parity error was detected in the RTC logic.,Fatal
+43,RTC Queue Overflow,RW1CHS,0,An overflow condition occurred in one of the RTC queues.,Fatal
+44,RTC Queue Underflow,RW1CHS,0,An underflow condition occurred in one of the RTC queues.,Fatal
+45,RTC Stage Valid Error,RW1CHS,0,"More than one stage valid indication was asserted in the same clock cycle.",Fatal
+46,RTC RCAM Bad State Error,RW1CHS,0,An illegal state was reached in the RCAM.,Fatal
+47,"RTC RCAM Multiple Hit Error",RW1CHS,0,"A RTC Requester ID look up in the RCAM hit against multi- ple entries.",Fatal
+48,RRB Parity Error,RW1CHS,0,An internal parity error was detected in the RRB logic.,Fatal
+49,"RRB request Size / Align- ment Error",RW1CHS,0,"A request to the Remote Register Block (RRB) for this macro had bad size or address alignment.",INF
+50,s_bad_addr_e_q,RW1CHS,0,"RXE_ARB local error, internal register bad address error.",Fatal
+51,s_req_size_align_e_q,RW1CHS,0,"RXE_ARB local error, internal register read / write access to a register had incorrect size or address alignment.",Fatal
+52:53,Reserved,RW1CHS,0,Reserved.,Fatal
+54,"Discontiguous DMA Write Fragmentation Error",RW1CHS,0,"An error with an inbound DMA write that had discontiguous byte enables in the last byte enable (LBE). The error tests for the following: 1) LBE is fragmented, and the total byte count is > 8. 2) Address is not 8-byte aligned. This error should be an internal hardware problem because this condition should be caught as a malformed TLP error in the PCIE/PBL block.",Fatal
+55,LIST Table Parity Error,RW1CHS,0,Parity error detected in the LIST table.,Fatal
+56,"LKP PEST Data Queue Error",RW1CHS,0,PEST Data Queue signaled error.,Fatal
+57,"PCIE Fatal Error Message Received",RW1CHS,0,"The PHB4 received an ERR_FATAL message from an endpoint or switch.","ER (PELTV)"
+58,"PCIE Nonfatal Error Mes- sage Received",RW1CHS,0,"The PHB4 received an ERR_NONFATAL message from an endpoint or switch.","ER (PELTV)"
+59,"PCIE Correctable Error Message Received",RW1CHS,0,"The PHB4 received an ERR_CORR message from an endpoint or switch.","INF / ER(PELTV)"
+60:63,Reserved,RW1CHS,0,Reserved.,Fatal

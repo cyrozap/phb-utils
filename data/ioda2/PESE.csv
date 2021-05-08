@@ -1,0 +1,26 @@
+Bits,Field,Definition
+0:1,Reserved,
+2,MMIO Cause,"This bit is set to ‘1’ if an MMIO operation froze the PE. It is set to zero if a DMA operation froze the PE. If both an MMIO and DMA operation attempt to freeze the endpoint in the same cycle, the MMIO operation has priority."
+3,CFG Read,The operation that caused the PE to be frozen was a PAPR inject CFG Read.
+4,CFG Write,"The operation that caused the PE to be frozen was a PAPR inject CFG Write, or a CFG Write with Size or Access error."
+5:7,Transaction Type (0:2),"This is an encoding of the transaction type that caused this PE to be frozen. The encoding is as follows: 000DMA Write 001MSI Interrupt 010DMA Read 011DMA Read Response 100MMIO Load 101MMIO Store 110Unused 111Other (internal checker detected error). This encoding is used for most fatal internal error cases. Examples include data parity errors, state machine errors, and so on This encoding is also used where there was no error indicated when a request cov- ered by one of the other encodings was first received, but after the request was is- sued, some exception condition occurs. For example: a response timeout."
+8,"CA Return Status or Completion Timeout","An MMIO Load, MMIO I/O Write, or other transaction returned from the PCIe link with a status of Completer Abort (CA), or the MMIO operation terminated with a completion time- out."
+9,UR Return Status,"An MMIO Load, MMIO I/O Write, or other transaction returned from the PCIe link with a status of Unsupported Request (UR)."
+10,NONFATAL_ERROR,A PCIe nonfatal error occurred.
+11,FATAL_ERROR,A PCIe fatal error occurred.
+12,Reserved,Reserved
+13,Parity/ECC UE Error,Any parity error or uncorrectable ECC error.
+14,"Correctable Error / CORR_ERROR",A correctable error occurred.
+15,PCIe Core Interrupt,An error occurred in the PCIe core.
+16,"Invalid MMIO Address Translation / IODA2 Error","The down-bound MMIO did not match against any BARs or was invalid, or the up-bound DMA request had an error defined by this architecture."
+17,Reserved,Reserved
+18,TCE Page Fault,A DMA transaction accessed a TCE whose page-access control bits were all zeros.
+19,TCE Access Fault,"A DMA transaction conflicted with its allowed permissions according to the TCE page-ac- cess control bits (includes all cases including page fault)."
+20,"DMA Response Timeout","A timeout occurred while waiting for an outstanding DMA Read Response to return from system memory."
+21,AIB Size Invalid,The Size field in an incoming AIB packet was not valid.
+22:25,Reserved,Reserved
+26:31,LEM Bit Number (0:5),Bit number in the LEM FIR Accumulator Register for the error that froze this endpoint.
+32:47,Requester ID (0:15),"This is the PCIe requester ID value in the TLP. PCI Bus (0:7) - Requester ID (0:7) PCI Dev (0:4) - Requester ID (8:12) PCI Func (0:3) - Requester ID (13:15)"
+48:63,MSI Data (0:15),"Bytes 0 and 1 for an MSI interrupt. Note: Only bits 4:0 of byte 0 are used for MSI interrupts in the design. For a PCIe Tag Reuse error, the bits 48:55 contain the PCIe Tag value that was detected as reused."
+64:66,Reserved,Reserved
+67:127,Fail Address(3:63),"This is the address that was associated with the transaction that froze the endpoint. For MMIOs, the address used is the 48-bit AIB address, right justified. MMIO Fail Address (03:15) = all zeros MMIO Fail Address (16:63) = AIB Address (0:47) For DMAs, the address used is the least significant 61 bits of the PCI address. DMA Fail Address (03:63) = PCI Address (60:0) Note: This field might be invalid or all zeros for certain cases like MMIO/DMA response re- lated errors where the address of the original transaction is no longer known or stored. The address is generally valid for all errors detected during the request phase of a transaction."

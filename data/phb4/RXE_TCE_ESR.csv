@@ -1,0 +1,37 @@
+Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
+0,"TCE CMP Internal Parity Error",RW1CHS,0,An internal parity error was detected in the TCE logic.,Fatal
+1,"TCE Request Page Access Error",RW1CHS,0,"IODA Error: An access type conflicted with the allowed permis- sions in the TCE translation during the TCE request phase (on TCE cache lookup).",ER (SINGLE)
+2,"TCE Response Page Access Error",RW1CHS,0,"IODA Error: An access type conflicted with the allowed permis- sions in the TCE translation during the TCE response phase.",ER (SINGLE)
+3,"TCE CMP Queue Overflow",RW1CHS,0,An overflow condition occurred in one of the TCE queues.,Fatal
+4,"TCE CMP Queue Underflow",RW1CHS,0,An underflow condition occurred in one of the TCE queues.,Fatal
+5,"TCE Secure Address Error",RW1CHS,0,"This is the 'fail-safe' secure address range check for TCE requests that can be issued to the AIB bus. The logic will not allow a TCE request to be issued that matches a secure address space. This fail-safe covers the multi-level TCE table cases and all cases where HV firmware might have pre-loaded the caches, and so forth.",Fatal
+6,"TCE Cache Bad State Error",RW1CHS,0,An illegal state was reached in the TCE Cache.,Fatal
+7,"TCE Cache Multi-Way Hit Error",RW1CHS,0,"A TCE Address look up in the TCE cache hit against multiple way entries.",Fatal
+8,"TCE Request Timeout Error",RW1CHS,0,"A TCE request did not receive its TCE response before the time- out period.",Fatal
+9,"TCE TCR ECC Correctable Error",RW1CHS,0,A correctable ECC error was detected in the TCR array.,INF
+10,"TCE TCR ECC Uncorrectable Error",RW1CHS,0,An uncorrectable ECC error was detected in the TCR array.,Fatal
+11,"TCE TDR ECC Correctable Error",RW1CHS,0,A correctable ECC error was detected in the TDR array.,INF
+12,"TCE TDR ECC Uncorrectable Error",RW1CHS,0,An uncorrectable ECC error was detected in the TDR array.,Fatal
+13,"TCE Unexpected Response Error",RW1CHS,0,"A TCE response was received with a TCE tag that did not match any outstanding TCE requests.",Fatal
+14,RRB Parity Error,RW1CHS,0,An internal parity error was detected in the RRB logic.,Fatal
+15,"RRB request Size/Alignment Error",RW1CHS,0,"A request to the Remote Register Block (RRB) for this macro had bad size or address alignment.",INF
+16,"TCE RES Internal Parity Error",RW1CHS,0,An internal parity error was detected in the TCE logic.,Fatal
+17,s_bad_addr_e_q,RW1CHS,0,"TCE local error, internal register bad address error.",Fatal
+18,s_req_size_align_e_q,RW1CHS,0,"TCE local error, internal register read / write access to a register had incorrect size or address alignment.",Fatal
+19,"TCE RES Queue Overflow",RW1CHS,0,An overflow condition occurred in one of the TCE queues.,Fatal
+20,"TCE RES Queue Underflow",RW1CHS,0,An underflow condition occurred in one of the TCE queues.,Fatal
+21,"TCE Response Data Parity Error",RW1CHS,0,The TCE data from the TXE macro interface had a parity error.,Fatal
+22,"TCE TCLB CAM Bad State Error",RW1CHS,0,An illegal state was reached in the TCLB.,Fatal
+23,"TCE TCLB CAM Multi-Hit Error",RW1CHS,0,A TCE Address look up in the TCLB hit against multiple entries.,Fatal
+24,"TCE Kill Internal Parity Error",RW1CHS,0,An internal parity error was detected in the TCE logic.,Fatal
+25,"TCE THASH Array ECC Correctable Error",RW1CHS,0,A correctable ECC error was detected in the THASH array.,INF
+26,"TCE THASH Array ECC Uncorrectable Error",RW1CHS,0,An uncorrectable ECC error was detected in the THASH array.,Fatal
+27,"TCE TCLB TDAT ECC Correctable Error",RW1CHS,0,A correctable ECC error was detected in the TCLB array.,INF
+28,"TCE TCLB TDAT ECC Uncorrectable Error",RW1CHS,0,An uncorrectable ECC error was detected in the TCLB array.,Fatal
+29,"TCE Kill State Machine One-Hot Error",RW1CHS,0,The internal TCE kill state machine signaled a one-hot state error.,Fatal
+30,"TCE Kill Queue Overflow",RW1CHS,0,An overflow condition occurred in one of the TCE queues.,Fatal
+31,"TCE Kill Queue Underflow",RW1CHS,0,An underflow condition occurred in one of the TCE queues.,Fatal
+32,"TCE Request Secure Address Register",RW1CHS,0,"Assert an error if a new TCE request from the DEC/TVT block if the fetch address matches secure range.",ER (SINGLE)
+33,"TCE Response Secure Address Register",RW1CHS,0,"Error check of RPN of TCE response for DMAs. This is a check of the secure range of the RPN bits.",ER (SINGLE)
+34:35,Reserved,RW1CHS,0,"Reserved, but implemented for future use.",Fatal
+36:63,Reserved,RO,0,Reserved.,

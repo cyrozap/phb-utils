@@ -1,0 +1,29 @@
+OpenPOWER I/O Design Architecture: Version 2
+
+Revision 1.0.0 (2016-02-17)
+Copyright © 2016 OpenPOWER Foundation
+
+All capitalized terms in the following text have the meanings assigned to them in the OpenPOWER Intellectual Property Rights Poli-
+cy (the "OpenPOWER IPR Policy"). The full Policy may be found at the OpenPOWER website or are available upon request.
+
+This document and translations of it may be copied and furnished to others, and derivative works that comment on or otherwise ex-
+plain it or assist in its implementation may be prepared, copied, published, and distributed, in whole or in part, without restriction of
+any kind, provided that the above copyright notice and this section are included on all such copies and derivative works. Howev-
+er, this document itself may not be modified in any way, including by removing the copyright notice or references to OpenPOWER,
+except as needed for the purpose of developing any document or deliverable produced by an OpenPOWER Work Group (in which
+case the rules applicable to copyrights, as set forth in the OpenPOWER IPR Policy, must be followed) or as required to translate it
+into languages other than English.
+
+The limited permissions granted above are perpetual and will not be revoked by OpenPOWER or its successors or assigns.
+
+This document and the information contained herein is provided on an "AS IS" basis AND TO THE MAXIMUM EXTENT PERMIT-
+TED BY APPLICABLE LAW, THE OpenPOWER Foundation AS WELL AS THE AUTHORS AND DEVELOPERS OF THIS STAN-
+DARDS FINAL DELIVERABLE OR OTHER DOCUMENT HEREBY DISCLAIM ALL OTHER WARRANTIES AND CONDITIONS,
+EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES, DUTIES OR
+CONDITIONS OF MERCHANTABILITY, OF FITNESS FOR A PARTICULAR PURPOSE, OF ACCURACY OR COMPLETENESS
+OF RESPONSES, OF RESULTS, OF WORKMANLIKE EFFORT, OF LACK OF VIRUSES, OF LACK OF NEGLIGENCE OR NON-
+INFRINGEMENT.
+
+OpenPOWER, the OpenPOWER logo, and openpowerfoundation.org are trademarks or registered trademarks of OpenPOWER
+Foundation, Inc., registered in many jurisdictions worldwide. Other company, product, and service names may be trademarks or ser-
+vice marks of others.

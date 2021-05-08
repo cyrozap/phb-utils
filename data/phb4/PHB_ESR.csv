@@ -1,0 +1,35 @@
+Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
+0,"ETU/RSB Request Address Error",RW1CHS,0,"SCOM or AIB register access to non-existent register address. Address did not match any register sets within the ETU_RSB macro.",INF
+1,"Fundamental A Request Address Error",RW1CHS,0,"ETU/Fundamental A Registers: SCOM or AIB register access to non-existent register address.",INF
+2,"Fundamental A Request Size/Alignment Error",RW1CHS,0,"ETU/Fundamental A Registers: SCOM or AIB register access was not 8-byte size and/or aligned.",Fatal
+3,"Fundamental A PCI CFG Addr/Size Error",RW1CHS,0,"ETU/Fundamental A Registers: SCOM or AIB, PCI CFG_DATA access addr+size crossed a 4-byte boundary.",Fatal
+4,"Fundamental A IODA Table Access Error",RW1CHS,0,"ETU/Fundamental A Registers: SCOM or AIB, IODA table access to unused/reserved table select in the table address register.",INF
+5,"Fundamental A Internal Registers Parity Error",RW1CHS,0,"ETU/Fundamental A Registers: Internal parity error detected in the registers.",Fatal
+6,"PHB Error Registers Request Address Error",RW1CHS,0,"ETU/Error Registers: SCOM or AIB register access to non-existent register address.",INF
+7,"PHB Error Registers Request Size/Alignment Error",RW1CHS,0,"ETU/Error Registers: SCOM or AIB register access was not 8-byte size and/or aligned.",Fatal
+8,"Fundamental B Request Address Error",RW1CHS,0,"ETU/Fundamental B Registers: SCOM or AIB register access to non-existent register address.",INF
+9,"Fundamental B Request Size/Alignment Error",RW1CHS,0,"ETU/Fundamental B Registers: SCOM or AIB register access was not 8-byte8-bytesize and/or aligned.",Fatal
+10,"Fundamental B Internal Registers Parity Error",RW1CHS,0,"ETU/Fundamental B Registers: Internal parity error detected in the registers.",Fatal
+11,"Internal Bus Logic Bad PCIe Macro Request Address",RW1CHS,0,"Internal Bus Logic Bad PCIe Macro Request Address sent from the ETU/RSB to the PCIe macro.",Fatal
+12,"Debug Request Address Error",RW1CHS,0,"ETU/Debug Registers: SCOM or AIB register access to non-existent register address.",INF
+13,"Debug Request Size/Alignment Error",RW1CHS,0,"ETU/Debug Registers: SCOM or AIB register access was not 8-byte size and/or aligned.",Fatal
+14,"Debug Internal Registers Parity Error",RW1CHS,0,"ETU/Debug Registers: Internal parity error detected in the registers.",Fatal
+15,"Internal Bus Logic State Machine One-Hot Error",RW1CHS,0,"Internal Bus Logic State Machine One-Hot Error",Fatal
+16,"UV Page Request Address Error",RW1CHS,0,"ETU/UV Page Registers: SCOM or AIB register access to non-existent register address.",INF
+17,"UV Page Request Size/Alignment Error",RW1CHS,0,"ETU/UV Page Registers: SCOM or AIB register access was not 8-byte size and/or aligned.",Fatal
+18,"UV Page Internal Registers Parity Error",RW1CHS,0,"ETU/UV Page Registers: Internal parity error detected in the registers.",Fatal
+19,Reserved,RW1CHS,0,"Reserved, but implemented for future use.",Fatal
+20,"RXE_ARB OR Error Status",RW1CHS,0,"RXE_ARB error bits, page 145. OR of all error status bits. This is used to test which macro error trap error occurred first among all the error macros.",INF1
+21,"RXE_MRG OR Error Status",RW1CHS,0,"RXE_MRG error bits, page 153. OR of all error status bits. This is used to test which macro error trap error occurred first among all the error macros.",INF1
+22,"RXE_TCE OR Error Status",RW1CHS,0,"RXE_TCE error bits, page 159. OR of all error status bits. This is used to test which macro error trap error occurred first among all the error macros.",INF1
+23,"TXE OR Error Status",RW1CHS,0,"TXE error bits, page 136. OR of all error status bits. This is used to test which macro error trap error occurred first among all the error macros.",INF1
+24,pcie_etu_regb_err_inf,RW1CHS,0,"Error signal from PCIE/REGB. Refer to REGB error status bits, page 285.",INF
+25,pcie_etu_regb_err_erc,RW1CHS,0,"Error signal from PCIE/REGB. Refer to REGB error status bits, page 285.","ER (ALL)"
+26,pcie_etu_regb_err_fat,RW1CHS,0,"Error signal from PCIE/REGB. Refer to REGB error status bits, page 285.",Fatal
+27,bus_regs_req_wr_data_p_e,RW1CHS,0,Internal register bus write data parity error.,Fatal
+28,"SCOM HV Indirect Access Error",RW1CHS,0,"SCOM HV Indirect Access Error. The indirect valid bit was not set in the indirect address register for the access. Therefore, the internal logic sent a NAK response on the SCOM bus.",INF
+29,"SCOM UV Indirect Access Error",RW1CHS,0,"SCOM UV Indirect Access Error. The indirect valid bit was not set in the indirect address register for the access. Therefore, the internal logic sent a NAK response on the SCOM bus.",INF
+30,"SCOM Internal Registers Parity Error",RW1CHS,0,"SCOM Registers: Internal parity error detected in the registers.",Fatal
+31,"SCOM Satellite Finite State Machine Error",RW1CHS,0,An error detected in the SCOM satellite finite state machine.,Fatal
+32:39,Reserved,RW1CHS,0,"Reserved, but implemented for future use.",Fatal
+40:63,Reserved,RO,0,"Reserved, not implemented",Fatal

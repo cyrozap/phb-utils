@@ -11,42 +11,42 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 12,pb_err_p_fe_pct_erq_overflow_e,RW1CHS,0,PCT Error Queue Overflow Error.,Fatal
 13,pb_err_p_fe_pct_erq_underflow_e,RW1CHS,0,PCT Error Queue Underflow Error.,Fatal
 14,pb_err_p_fe_pct_onp_tags_rls_unused_e,RW1CHS,0,"PCT observed a release of an unused Outbound Nonposted Tag error ITR dequeued an invalid tag!",Fatal
-15,pb_err_p_fe_pct_onp_tags_used_notfree_e,RW1CHS,0,"PCT observed an enqueue of an already used Out- bound Nonposted Tag error OTD reused an in-flight tag!",Fatal
+15,pb_err_p_fe_pct_onp_tags_used_notfree_e,RW1CHS,0,"PCT observed an enqueue of an already used Outbound Nonposted Tag error OTD reused an in-flight tag!",Fatal
 16,pb_err_p_fe_pct_onp_tags_used_unexp_e,RW1CHS,0,PBL internal PCT tag use error.,Fatal
 17,pb_err_p_fe_bct_onp_tags_rls_unused_e,RW1CHS,0,"BLIF Completion Table release of an unused tag (unexpected completion).",Fatal
 18,pb_err_p_fe_bct_onp_tags_used_notfree_e,RW1CHS,0,BLIF Completion Table usage of used tag.,Fatal
-19,pb_err_p_fe_ib_bct_rd_inv,RW1CHS,0,"BLIF Completion Table Read Invalid Entry (unex- pected Completion). The inbound Completion header buffer entry, when read from the IBCH pointed to a BCT entry that was not marked valid.",Fatal
+19,pb_err_p_fe_ib_bct_rd_inv,RW1CHS,0,"BLIF Completion Table Read Invalid Entry (unexpected Completion). The inbound Completion header buffer entry, when read from the IBCH pointed to a BCT entry that was not marked valid.",Fatal
 20,pb_err_p_fe_ob_buffer_overflow_e,RW1CHS,0,Outbound Buffer Overflow Error.,Fatal
 21,pb_err_p_fe_ob_buffer_underflow_e,RW1CHS,0,Outbound Buffer Underflow Error.,Fatal
 22,pb_err_p_fe_ib_buffer_overflow_e,RW1CHS,0,Inbound Buffer Overflow Error.,Fatal
 23,pb_err_p_fe_ib_buffer_underflow_e,RW1CHS,0,Inbound Buffer Underflow Error.,Fatal
-24,pb_err_p_fe_ib_d_ecc_ue,RW1CHS,0,"Inbound Data Buffer ECC Uncorrectable Error. One of the inbound data buffers (P/N/C) had an uncorrectable error on the read data when process- ing the TLP. Refer to the error log registers to determine which buffer was the cause.",Fatal
-25,pb_err_p_fe_ib_h_ecc_ue,RW1CHS,0,"Inbound Header Buffer ECC Uncorrectable Error One of the inbound header buffers (P/N/C) had an uncorrectable error on the read data when process- ing the header. Refer to the error log registers to determine which header buffer was the cause.",Fatal
+24,pb_err_p_fe_ib_d_ecc_ue,RW1CHS,0,"Inbound Data Buffer ECC Uncorrectable Error. One of the inbound data buffers (P/N/C) had an uncorrectable error on the read data when processing the TLP. Refer to the error log registers to determine which buffer was the cause.",Fatal
+25,pb_err_p_fe_ib_h_ecc_ue,RW1CHS,0,"Inbound Header Buffer ECC Uncorrectable Error One of the inbound header buffers (P/N/C) had an uncorrectable error on the read data when processing the header. Refer to the error log registers to determine which header buffer was the cause.",Fatal
 26,pb_err_p_fe_ob_d_ecc_ue,RW1CHS,0,Outbound Data buffer ECC UE.,Fatal
 27,pb_err_p_fe_ob_h_ecc_ue,RW1CHS,0,Outbound Header buffer ECC UE.,Fatal
 28,pb_err_p_fe_ocf_ecc_ue,RW1CHS,0,OCF Interface Data Bus ECC UE.,Fatal
 29:31,Reserved,RW1CHS,0,"Reserved, but implemented register(s) for future use.",Fatal
 32,pb_err_p_fe_tx_pst_discard_e,RW1CHS,0,"Outbound Posted Request discarded error indicator. An outbound posted request at the head of the queue was dropped and will not be transmitted over the PCIe link.",Fatal
-33,pb_err_p_inf_tx_npst_discard_e,RW1CHS,0,"Outbound Nonposted Request discarded error indi- cator. An outbound nonposted request at the head of the queue was dropped and will not be transmitted over the PCIe link. An error response is generated back to the BLIF requester.",INF1
+33,pb_err_p_inf_tx_npst_discard_e,RW1CHS,0,"Outbound Nonposted Request discarded error indicator. An outbound nonposted request at the head of the queue was dropped and will not be transmitted over the PCIe link. An error response is generated back to the BLIF requester.",INF1
 34,pb_err_p_fe_nbw_tlp_e,RW1CHS,0,"Inbound Non-Blocking Write TLP Error. Indicates a dropped inbound NBW TLP.",Fatal
 35,Reserved,RW1CHS,0,"Reserved, but implemented register(s) for future use.",Fatal
 36,pb_err_p_fe_pci_rcv_cpl_ca_e,RW1CHS,0,"Completer Abort (CA) completion response received.",INF1
 37,pb_err_p_fe_pci_rcv_cpl_crs_e,RW1CHS,0,"Config Retry Status (CRS) completion response received.",INF1
-38,pb_err_p_fe_pci_rcv_cpl_rsvd_e,RW1CHS,0,"Reserved Completion response received. The response code does not match a known com- pletion status value.",Fatal
-39,pb_err_p_fe_pci_rcv_cpl_ur_e,RW1CHS,0,"Unsupported Request Received Error. This is a summary error of all the individual Unsup- ported Request error log indicators for inbound TLP checks.",INF1
+38,pb_err_p_fe_pci_rcv_cpl_rsvd_e,RW1CHS,0,"Reserved Completion response received. The response code does not match a known completion status value.",Fatal
+39,pb_err_p_fe_pci_rcv_cpl_ur_e,RW1CHS,0,"Unsupported Request Received Error. This is a summary error of all the individual Unsupported Request error log indicators for inbound TLP checks.",INF1
 40,pb_err_p_fe_pci_rcv_ecrc_e,RW1CHS,0,"ECRC error detected on inbound TLP (from PTL core).",Fatal
-41,pb_err_p_fe_pci_rcv_malf_tlp_e,RW1CHS,0,"Malformed TLP error. This is a summary error of all the individual mal- formed TLP error log indicators.",Fatal
+41,pb_err_p_fe_pci_rcv_malf_tlp_e,RW1CHS,0,"Malformed TLP error. This is a summary error of all the individual malformed TLP error log indicators.",Fatal
 42,pb_err_p_fe_pci_rcv_overflow_e,RW1CHS,0,Receiver overflow detected (from TLDLP core).,Fatal
 43,pb_err_p_fe_pci_rcv_poisoned_tlp_e,RW1CHS,0,Received Inbound Poisoned TLP.,"Fatal vA4.1 INF1 vA4.2"
-44,pb_err_p_fe_pci_rcv_unexp_cpl_e,RW1CHS,0,"Unexpected Completion Received Error. This is a summary error of all the individual unex- pected completion error log indicators.",Fatal
-45,pb_err_p_fe_pci_rcv_unsup_req_e,RW1CHS,0,"Unsupported Request Received Error. This is a summary error of all the individual Unsup- ported Request error log indicators for inbound TLP checks.",INF1
+44,pb_err_p_fe_pci_rcv_unexp_cpl_e,RW1CHS,0,"Unexpected Completion Received Error. This is a summary error of all the individual unexpected completion error log indicators.",Fatal
+45,pb_err_p_fe_pci_rcv_unsup_req_e,RW1CHS,0,"Unsupported Request Received Error. This is a summary error of all the individual Unsupported Request error log indicators for inbound TLP checks.",INF1
 46,pb_err_p_fe_pci_sig_cpl_abort_e,RW1CHS,0,"Issued Completer Abort status outbound. PBL issued an outbound completion TLP with a completer abort ('CA') completion status.",INF1
 47,pb_err_p_fe_pci_sig_cpl_timeout_e,RW1CHS,0,"Completion Timeout Error. A timeout was detected for an outbound nonposted request which is waiting on a completion from PCI.",INF1
 48,pb_err_p_fe_pci_sig_poisoned_tlp_e,RW1CHS,0,"Signaled outbound poisoned TLP. PBL issued an outbound TLP with the poisoned bit ('EP') set in the header.",INF1
 49:51,Reserved,RW1CHS,0,"Reserved, but implemented register(s) for future use.",Fatal
-52,pb_err_p_inf_out_trans_to_pst_e,RW1CHS,0,"Outbound Posted Request transmission timeout. Indicates the outbound posted request at the head of the posted queue was not able to be transmitted in the allotted time due to one of the following condi- tions: 1. Lack of PCIe credits for the request 2. Lack of Replay buffer space for the request. This is informational. The request is not dropped, it continues to wait for permission to proceed. This could indicate a credit return or DLL Ack problem from the PCIe link.",Fatal
-53,pb_err_p_inf_out_trans_to_npst_e,RW1CHS,0,"Outbound nonposted request transmission timeout. Indicates the outbound nonposted request at the head of the nonposted queue was not able to be transmitted in the allotted time due one of the follow- ing conditions: •Lack of PCIe credits for the request. •Lack of Replay buffer credits for the request. •Blocked by outbound Posted request due to PCIe ordering. This is informational. The request is not dropped, it continues to wait for permission to proceed. The nonposted timeout timer does not being if there are no available nonposted request tags to create the outbound request. The lack of request tags is timed via the completion timeout timers for previ- ously issued nonposted requests.",Fatal
-54,pb_err_p_inf_out_trans_to_cpl_e,RW1CHS,0,"Outbound Completion transmission timeout. Indicates the outbound completion at the head of the completion queue was not able to be transmitted in the allotted time due to one of the following condi- tions: •Lack of PCIe credits for the request. •Lack of Replay buffer credits for the request. •Blocked by outbound posted request due to PCIe ordering. This is informational. The request is not dropped, it continues to wait for permission to proceed.",Fatal
+52,pb_err_p_inf_out_trans_to_pst_e,RW1CHS,0,"Outbound Posted Request transmission timeout. Indicates the outbound posted request at the head of the posted queue was not able to be transmitted in the allotted time due to one of the following conditions: 1. Lack of PCIe credits for the request 2. Lack of Replay buffer space for the request. This is informational. The request is not dropped, it continues to wait for permission to proceed. This could indicate a credit return or DLL Ack problem from the PCIe link.",Fatal
+53,pb_err_p_inf_out_trans_to_npst_e,RW1CHS,0,"Outbound nonposted request transmission timeout. Indicates the outbound nonposted request at the head of the nonposted queue was not able to be transmitted in the allotted time due one of the following conditions: •Lack of PCIe credits for the request. •Lack of Replay buffer credits for the request. •Blocked by outbound Posted request due to PCIe ordering. This is informational. The request is not dropped, it continues to wait for permission to proceed. The nonposted timeout timer does not being if there are no available nonposted request tags to create the outbound request. The lack of request tags is timed via the completion timeout timers for previously issued nonposted requests.",Fatal
+54,pb_err_p_inf_out_trans_to_cpl_e,RW1CHS,0,"Outbound Completion transmission timeout. Indicates the outbound completion at the head of the completion queue was not able to be transmitted in the allotted time due to one of the following conditions: •Lack of PCIe credits for the request. •Lack of Replay buffer credits for the request. •Blocked by outbound posted request due to PCIe ordering. This is informational. The request is not dropped, it continues to wait for permission to proceed.",Fatal
 55,Reserved,RW1CHS,0,"Reserved, but implemented register(s) for future use.",Fatal
 56,pb_err_p_inf_ib_d_ecc_ce,RW1CHS,0,Inbound Data buffer ECC CE.,INF1
 57,pb_err_p_inf_ib_h_ecc_ce,RW1CHS,0,Inbound Header buffer ECC CE.,INF1

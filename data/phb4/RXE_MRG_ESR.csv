@@ -4,7 +4,7 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 9,"MRG TMB Response Invalid Error",RW1CHS,0,A TCE response was received for an invalid TMB entry.,Fatal
 10,"MRG TMB Response Ready Error",RW1CHS,0,"An unsolicited TCE response was received for a TMB entry that was not waiting for a response.",Fatal
 11,"MRG MMIO Queue Overflow Error",RW1CHS,0,An MMIO related queue overflowed.,Fatal
-12,"MRG MMIO Queue Under- flow Error",RW1CHS,0,An MMIO related queue underflowed.,Fatal
+12,"MRG MMIO Queue Underflow Error",RW1CHS,0,An MMIO related queue underflowed.,Fatal
 13,"MRG MMIO Internal Parity Error",RW1CHS,0,An MMIO internal resource had a parity error.,Fatal
 14,"MRG DMA Queue Overflow Error",RW1CHS,0,A DMA related queue overflowed.,Fatal
 15,"MRG DMA Queue Underflow Error",RW1CHS,0,A DMA related queue underflowed.,Fatal
@@ -30,12 +30,12 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 35,"DSP Data Credit Parity Error",RW1CHS,0,The internal data credit counters had a parity error.,Fatal
 36,"DSP Completion State Machine One-Hot Error",RW1CHS,0,The state machine was found in multiple/invalid states.,Fatal
 37,"DSP Write Thread State Machine One-Hot Error",RW1CHS,0,The state machine was found in multiple/invalid states.,Fatal
-38,"DSP DMA Secure Address Error (vA4.2)",RW1CHS,0,"This is the 'fail-safe' check for a Secure Address violation in a DMA read or write request before it is issued to the AIB bus. Refer to the UV - Secure Address Exclude CMP/MSK Regis- ter on page 295.",Fatal
-39,"DSP MSI Interrupt Notifica- tion Secure Address Error (vA4.2)",RW1CHS,0,"This error checks that the interrupt notification address is within the secure range when the secure check is enabled. If the address is not in the secure range it will flag this error. Refer to the interrupt notification registers on page 110. Refer to the secure control registers on page 295.",Fatal
+38,"DSP DMA Secure Address Error (vA4.2)",RW1CHS,0,"This is the 'fail-safe' check for a Secure Address violation in a DMA read or write request before it is issued to the AIB bus. Refer to the UV - Secure Address Exclude CMP/MSK Register on page 295.",Fatal
+39,"DSP MSI Interrupt Notification Secure Address Error (vA4.2)",RW1CHS,0,"This error checks that the interrupt notification address is within the secure range when the secure check is enabled. If the address is not in the secure range it will flag this error. Refer to the interrupt notification registers on page 110. Refer to the secure control registers on page 295.",Fatal
 40,"DSP TREQ ECC Correctable Error",RW1CHS,0,ECC correctable error detected in the TREQ queue.,INF
 41,"DSP TREQ ECC Uncorrectable Error",RW1CHS,0,ECC uncorrectable error detected in the TREQ queue.,Fatal
 42,"DSP MMIO Queue Overflow Error",RW1CHS,0,An MMIO related queue overflowed.,Fatal
-43,"DSP MMIO Queue Under- flow Error",RW1CHS,0,An MMIO related queue underflowed.,Fatal
+43,"DSP MMIO Queue Underflow Error",RW1CHS,0,An MMIO related queue underflowed.,Fatal
 44,"DSP MMIO Internal Parity Error",RW1CHS,0,An MMIO internal resource had a parity error.,Fatal
 45,"DSP DMA Queue Overflow Error",RW1CHS,0,A DMA related queue overflowed.,Fatal
 46,"DSP DMA Queue Underflow Error",RW1CHS,0,A DMA related queue underflowed.,Fatal
@@ -50,6 +50,6 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 58,"ICPLD ECC Correctable Error",RW1CHS,0,A correctable ECC error was detected in the array.,INF
 59,"ICPLD ECC Uncorrectable Error",RW1CHS,0,An uncorrectable ECC error was detected in array.,Fatal
 60,"NBWD ECC Correctable Error",RW1CHS,0,"A correctable ECC error was detected in the Non-Blocking Write data array. Active in x16 builds only.",INF
-61,"NBWD ECC Uncorrectable Error",RW1CHS,0,"An uncorrectable ECC error was detected in the Non- Blocking Write data array. Active in x16 builds only",Fatal
+61,"NBWD ECC Uncorrectable Error",RW1CHS,0,"An uncorrectable ECC error was detected in the Non-Blocking Write data array. Active in x16 builds only",Fatal
 62,Reserved,RW1CHS,0,"Reserved, but implemented for future use.",Fatal
 63,"pb_etu_ai_rx_raise_fence (rising edge)",RW1CHS,0,"PB logic above the PHB4 asserted its raise fence signal. This error is also routed to the LEM FIR. This can be used for debug in conjunction with the LEM WOF to test if the PB logic asserted its fence before other PHB4 errors. The PHB4 logic detects the error as a rising edge of the PB signal. The error will not reassert if the PB signal remains constant.",Fatal

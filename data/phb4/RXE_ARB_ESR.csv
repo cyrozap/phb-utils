@@ -17,8 +17,8 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 15,"ARB DMA Internal Parity Error",RW1CHS,0,An internal logic parity error was detected.,Fatal
 16,"BLIF Header Control Bits Parity Error",RW1CHS,0,A parity error was detected on the BLIF header control bits.,Fatal
 17,"BLIF Data Control Bits Parity Error",RW1CHS,0,A parity error was detected on the BLIF data control bits.,Fatal
-18,"BLIF Unsupported Request (UR) Error",RW1CHS,0,"A command was received on the BLIF interface indicating it was an unsupported request. A 'Nonposted' request will be acknowledged with a Comple- tion response with UR status. A 'Posted' request type will be dropped.",INF
-19,"BLIF Completion Timeout Error",RW1CHS,0,"A completion was received on the BLIF interface with a time- out indication. The PCIE/PBL block detected the timeout and reported it via the BLIF interface.",Fatal
+18,"BLIF Unsupported Request (UR) Error",RW1CHS,0,"A command was received on the BLIF interface indicating it was an unsupported request. A 'Nonposted' request will be acknowledged with a Completion response with UR status. A 'Posted' request type will be dropped.",INF
+19,"BLIF Completion Timeout Error",RW1CHS,0,"A completion was received on the BLIF interface with a timeout indication. The PCIE/PBL block detected the timeout and reported it via the BLIF interface.",Fatal
 20,"SEID Table ECC Correctable (CE) Error (vA4.1) Secure Address Error (vA4.2)",RW1CHS,0,"An ECC CE detected in the SEID table. (vA4.1). Secure Address Error (vA4.2). Non-translated DMA address matched against secure address checker. Refer to Section 4.7.2.1 UV - Secure Address Exclude CMP/MSK Register on page 295.","INF (vA4.1) ER (SINGLE) (vA4.2)"
 21,"SEID Table ECC Uncorrectable (UE) Error (vA4.1) Reserved (vA4.2)",RW1CHS,0,"An ECC UE detected in the SEID table. (vA4.1). Reserved (vA4.2).",Fatal
 22,NBW Size Error,RW1CHS,0,"A Non-Blocking Write was received on the BLIF inbound interface with invalid size. The legal NBW sizes are 16, 32, 64, and 128B. In addition, the size and address alignment of the transaction must match.",Fatal
@@ -34,7 +34,7 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 32,PELT-V BAR Disabled Error,RW1CHS,0,"An Error Message attempted to access the PELT-V BAR when it was disabled.",Fatal
 33,IODA Table Parity Error,RW1CHS,0,"A parity error occurred in one of the IODA tables in the DEC block.",Fatal
 34,PCT Timeout,RW1CHS,0,"A timeout occurred in the PCT table. A PCI completion was never returned for a PCIe request.",Fatal
-35,"PCT Unexpected Completion",RW1CHS,0,"A PCI completion was received but did not match any out- standing requests.",Fatal
+35,"PCT Unexpected Completion",RW1CHS,0,"A PCI completion was received but did not match any outstanding requests.",Fatal
 36,PCT Parity Error,RW1CHS,0,A parity error occurred in the PCI Completion Table.,Fatal
 37,DEC Stage Valid Error,RW1CHS,0,"More than one stage valid indication was asserted in the same clock cycle.",Fatal
 38,DEC Stage Parity Error,RW1CHS,0,A parity error detected in the control pipeline stages.,Fatal
@@ -46,9 +46,9 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 44,RTC Queue Underflow,RW1CHS,0,An underflow condition occurred in one of the RTC queues.,Fatal
 45,RTC Stage Valid Error,RW1CHS,0,"More than one stage valid indication was asserted in the same clock cycle.",Fatal
 46,RTC RCAM Bad State Error,RW1CHS,0,An illegal state was reached in the RCAM.,Fatal
-47,"RTC RCAM Multiple Hit Error",RW1CHS,0,"A RTC Requester ID look up in the RCAM hit against multi- ple entries.",Fatal
+47,"RTC RCAM Multiple Hit Error",RW1CHS,0,"A RTC Requester ID look up in the RCAM hit against multiple entries.",Fatal
 48,RRB Parity Error,RW1CHS,0,An internal parity error was detected in the RRB logic.,Fatal
-49,"RRB request Size / Align- ment Error",RW1CHS,0,"A request to the Remote Register Block (RRB) for this macro had bad size or address alignment.",INF
+49,"RRB request Size / Alignment Error",RW1CHS,0,"A request to the Remote Register Block (RRB) for this macro had bad size or address alignment.",INF
 50,s_bad_addr_e_q,RW1CHS,0,"RXE_ARB local error, internal register bad address error.",Fatal
 51,s_req_size_align_e_q,RW1CHS,0,"RXE_ARB local error, internal register read / write access to a register had incorrect size or address alignment.",Fatal
 52:53,Reserved,RW1CHS,0,Reserved.,Fatal
@@ -56,6 +56,6 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 55,LIST Table Parity Error,RW1CHS,0,Parity error detected in the LIST table.,Fatal
 56,"LKP PEST Data Queue Error",RW1CHS,0,PEST Data Queue signaled error.,Fatal
 57,"PCIE Fatal Error Message Received",RW1CHS,0,"The PHB4 received an ERR_FATAL message from an endpoint or switch.","ER (PELTV)"
-58,"PCIE Nonfatal Error Mes- sage Received",RW1CHS,0,"The PHB4 received an ERR_NONFATAL message from an endpoint or switch.","ER (PELTV)"
+58,"PCIE Nonfatal Error Message Received",RW1CHS,0,"The PHB4 received an ERR_NONFATAL message from an endpoint or switch.","ER (PELTV)"
 59,"PCIE Correctable Error Message Received",RW1CHS,0,"The PHB4 received an ERR_CORR message from an endpoint or switch.","INF / ER(PELTV)"
 60:63,Reserved,RW1CHS,0,Reserved.,Fatal

@@ -2,13 +2,13 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"'OR' of Error Bits","Error Cl
 0,TXE: AIB Command Invalid,RWHS,0,"See TXE Error Status Register page 136, bit 0 for details.",TXE: 0,Fatal
 1,TXE: AIB Addressing Error,RWHS,0,"See TXE Error Status Register page 136, bit 2 for details.",TXE: 2,INF
 2,TXE:AIB Size/Alignment Error,RWHS,0,"See TXE Error Status Register page 136, bit 3/8 for details.","TXE: 3,8",Fatal
-3,"TXE: PAPR Outbound Injection Error Triggered",RWHS,0,"The condition set up by the PAPR Error Injection Registers triggered its intended condition to inject an outbound error. This is more of a status than an error, but it can be treated like a normal error.","TXE: 28,30","ER (SIN- GLE)"
+3,"TXE: PAPR Outbound Injection Error Triggered",RWHS,0,"The condition set up by the PAPR Error Injection Registers triggered its intended condition to inject an outbound error. This is more of a status than an error, but it can be treated like a normal error.","TXE: 28,30","ER (SINGLE)"
 4,TXE: AIB Fatal Class Errors,RWHS,0,"See TXE Error Status Register (page 136) bits for details.","TXE: 4,5,9,10,11, 14,15",Fatal
 5,TXE: AIB INF Class Errors,RWHS,0,"See TXE Error Status Register (page 136) bits for details.","TXE: 12,36,42,46",INF
 6,Reserved,RWHS,0,Reserved.,,
 7,TXE: AIB DAT_ERR Indication,RWHS,0,"See TXE Error Status Register page 136, bit 13, 22 for details.","TXE: 13,22",Fatal
 8,"TXE: AIB Common Array Based Fatal Errors",RWHS,0,"See TXE Error Status Register (page 136) bits for details.","TXE: 23,37,38,40 ,43,44, 45,47,48, 49",Fatal
-9,"TXE: AIB Common Bus/Regis- ter Based Fatal Errors",RWHS,0,"See TXE Error Status Register page 136, bit 50, 51, 52 for details.","TXE: 50,51,52",Fatal
+9,"TXE: AIB Common Bus/Register Based Fatal Errors",RWHS,0,"See TXE Error Status Register page 136, bit 50, 51, 52 for details.","TXE: 50,51,52",Fatal
 10,"TXE: AIB Common Logic Based Fatal Errors",RWHS,0,"See TXE Error Status Register page 136, bit 19, 20, 21, 53, 54, 55 for details.","TXE: 19,20,21, 53,54,55",Fatal
 11,TXE: BLIF Controls Parity Error,RWHS,0,"See TXE Error Status Register page 136, bit 16 for details.",TXE: 16,Fatal
 12,"TXE: PCIe CFG Write CA or UR Response",RWHS,0,"See TXE Error Status Register page 136, bit 17 for details.",TXE: 17,"ER (SINGLE)"
@@ -33,33 +33,33 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"'OR' of Error Bits","Error Cl
 31,"PCIe Macro Error Signals Active",RWHS,0,The PCIe macro Error logic has a signal active.,"PHB: 24, 25, 26","Class depends on source bits"
 32,ARB: IODA Fatal Error,RWHS,0,A fatal internal IODA logic error was detected.,"ARB: 33",Fatal
 33,"ARB: IODA MSI PE Mismatch Error",RWHS,0,"A mismatch error occurred between the MIST and RTT tables.",ARB: 27,"ER (SINGLE)"
-34,"ARB: MSI Size / Address Align- ment Error",RWHS,0,"An MSI interrupt was received and was not 16 byte address aligned, or the size field was larger than one data beat (16 byte).","ARB: 2,3",Fatal
+34,"ARB: MSI Size / Address Alignment Error",RWHS,0,"An MSI interrupt was received and was not 16 byte address aligned, or the size field was larger than one data beat (16 byte).","ARB: 2,3",Fatal
 35,ARB: IODA TVT Errors,RWHS,0,"TCE Validation Table error occurred. The entry is invalid, or the PCI Address was out of range as defined by the TTA bounds in the TVE entry.","ARB: 26, 28","ER (SINGLE)"
 36,"ARB: PCIe Fatal Error Message Received",RWHS,0,"The PHB4 received a ERR_FATAL message from an endpoint.",ARB: 57,"ER (PELTV)"
-37,"ARB: PCIe Nonfatal Error Mes- sage Received",RWHS,0,"The PHB4 received an ERR_NONFATAL message from an endpoint.",ARB: 58,"ER (PELTV)"
+37,"ARB: PCIe Nonfatal Error Message Received",RWHS,0,"The PHB4 received an ERR_NONFATAL message from an endpoint.",ARB: 58,"ER (PELTV)"
 38,"ARB: PCIe Correctable Error Message Received",RWHS,0,"The PHB4 received an ERR_CORR message from an endpoint.",ARB: 59,INF
 39,"ARB: PAPR Inbound Injection Error Triggered",RWHS,0,"The condition set up by the PAPR Error Injection Registers triggered its intended condition to inject an inbound error. This is more of a status than an error, but it can be treated like a normal error.",ARB: 39,"ER (SINGLE)"
 40,ARB: Inbound Fatal Errors,RWHS,0,"A fatal inbound logic or array error occurred. See ARB Error Status register bits for details.","ARB: 8, 9, 10, 11, 12, 13, 14, 15, 22, 36, 37, 38, 42, 43, 44, 45, 46, 47, 56 ARB: 18 (vA4.1) ARB: 54 (vA4.2)",Fatal
 41,"ARB: Internal BAR Disabled Error",RWHS,0,"An access was made to a resource and the resource BAR register is not properly set up. In ARB this is the PELTV, RTT.","ARB: 32, 41",Fatal
-42,"ARB: Inbound Completion Sta- tus not zeros",RWHS,0,"A completion TLP had completion status not equal zeros. This status is Unsupported Request (UR) or Com- pletor Abort (CA). In the case of a CFG access, it could include retry status (CRS).","ARB: 0, 1, 19 (Fatal)","Fatal (all) (vA4.1) ER (SINGLE) Fatal (19 only) (vA4.2)"
-43,ARB: PCT Errors,RWHS,0,"A PCI completion timeout occurred for an outstand- ing PCIe transaction, or an unexpected PCI com- pletion was received and did not match any outstanding PCI requests.","ARB: 34, 35",Fatal
+42,"ARB: Inbound Completion Status not zeros",RWHS,0,"A completion TLP had completion status not equal zeros. This status is Unsupported Request (UR) or Completor Abort (CA). In the case of a CFG access, it could include retry status (CRS).","ARB: 0, 1, 19 (Fatal)","Fatal (all) (vA4.1) ER (SINGLE) Fatal (19 only) (vA4.2)"
+43,ARB: PCT Errors,RWHS,0,"A PCI completion timeout occurred for an outstanding PCIe transaction, or an unexpected PCI completion was received and did not match any outstanding PCI requests.","ARB: 34, 35",Fatal
 44,"ARB: Inbound ECC Correctable Error",RWHS,0,"A single bit, correctable error occurred in one of the arrays in the inbound logic.","ARB: 25, 29 ARB: 18 (vA4.2)",INF
-45,"ARB: Inbound ECC Uncorrect- able Error",RWHS,0,"A double-bit, uncorrectable error occurred in one of the arrays in the inbound logic.","ARB: 30, 31",Fatal
-46,"ARB: Inbound TLP Data Poi- soned Error OR ARB: Secure Address Error (vA4.2)",RWHS,0,"A TLP was received and its TLP header indicates that the data was poisoned. Secure Address Error (vA4.2) Non-translated DMA address matched against secure address checker. Refer to UV - Secure Address Exclude CMP/MSK Register on page 295.","ARB: 24 ARB: 20 (vA4.2) ARB: 54 (vA4.1)","ER (SINGLE)"
+45,"ARB: Inbound ECC Uncorrectable Error",RWHS,0,"A double-bit, uncorrectable error occurred in one of the arrays in the inbound logic.","ARB: 30, 31",Fatal
+46,"ARB: Inbound TLP Data Poisoned Error OR ARB: Secure Address Error (vA4.2)",RWHS,0,"A TLP was received and its TLP header indicates that the data was poisoned. Secure Address Error (vA4.2) Non-translated DMA address matched against secure address checker. Refer to UV - Secure Address Exclude CMP/MSK Register on page 295.","ARB: 24 ARB: 20 (vA4.2) ARB: 54 (vA4.1)","ER (SINGLE)"
 47,ARB: RTC PE# Invalid Error,RWHS,0,"The PE number in the RTE was all ones (all 16 bits). This indicates that it is an invalid entry.",ARB: 40,INF
 48,MRG: Inbound Fatal Errors,RWHS,0,"A fatal inbound logic or array error occurred. See MRG Error Status register bits for details.","MRG: 8 to 16,21,22,23 ,26,28,30,3 1,32 to 38,48 to 50 MRG: 25 (vA4.2)",Fatal
 49,"MRG: Internal BAR Disabled Error",RWHS,0,"An access was made to a resource and the resource BAR register is not properly set up. In MRG this is the PEST.",MRG: 51,Fatal
 50,"MRG: Inbound ECC Correctable Error",RWHS,0,"A single bit, correctable error occurred in one of the arrays in the inbound logic.","MRG: 40, 56, 58, 60",INF
 51,"MRG: Inbound ECC Uncorrectable Error",RWHS,0,"A double-bit, uncorrectable error occurred in one of the arrays in the inbound logic.","MRG: 41, 57, 59, 61",Fatal
 52,AIB TX Timeout Error,RWHS,0,"An inbound transaction, request or response, could not be sent on the AIB TX interface before a set timeout period.",MRG: 24,Fatal
-53,Migration Register Table Error,RWHS,0,A Migration Register Table error occurred.,"MRG: 17,18","ER (SIN- GLE)"
-54,MSI Secure Address Error,RWHS,0,"This error checks that the interrupt notification address is within the secure range when the secure check is enabled. If the address is not in the secure range it will flag this error. Refer to the interrupt notification registers starting on page 110 and the secure control registers start- ing on page 297.",MRG: 39,Fatal
+53,Migration Register Table Error,RWHS,0,A Migration Register Table error occurred.,"MRG: 17,18","ER (SINGLE)"
+54,MSI Secure Address Error,RWHS,0,"This error checks that the interrupt notification address is within the secure range when the secure check is enabled. If the address is not in the secure range it will flag this error. Refer to the interrupt notification registers starting on page 110 and the secure control registers starting on page 297.",MRG: 39,Fatal
 55,"pb_etu_ai_rx_raise_fence (rising edge)",RWHS,0,"PB logic above the PHB4 asserted its raise fence signal. This error is also routed to the LEM FIR. This can be used for debug in conjunction with the LEM WOF to test if the PB logic asserted its fence before other PHB4 errors. The PHB4 logic detects the error as a rising edge of the PB signal. The error will not reassert if the PB signal remains constant.",MRG: 63,Fatal
 56,TCE: IODA Page Access Error,RWHS,0,"Refer to Table 4.4.4.54 RXE_TCE Error Status Register on page 159.","TCE: 1,2 TCE: 32,33 (vA4.2)","ER (SINGLE)"
 57,"TCE: TCE Request Timeout Error",RWHS,0,"Refer to Table 4.4.4.54 RXE_TCE Error Status Register on page 159.",TCE: 8,Fatal
 58,"TCE: TCE Unexpected Response Error",RWHS,0,"Refer to Table 4.4.4.54 RXE_TCE Error Status Register on page 159.",TCE: 13,Fatal
-59,"TCE: TCE Common Fatal Errors",RWHS,0,"Refer to Table 4.4.4.54 RXE_TCE Error Status Register on page 159.","TCE: 0,3,4,6- 8,13-14,16- 24,29-31 TCE: 5 (vA4.2)",Fatal
+59,"TCE: TCE Common Fatal Errors",RWHS,0,"Refer to Table 4.4.4.54 RXE_TCE Error Status Register on page 159.","TCE: 0,3,4,6-8,13-14,16-24,29-31 TCE: 5 (vA4.2)",Fatal
 60,TCE: ECC Correctable Error,RWHS,0,"Refer to Table 4.4.4.54 RXE_TCE Error Status Register on page 159.","TCE: 9,11",INF
 61,TCE: ECC Uncorrectable Error,RWHS,0,"Refer to Table 4.4.4.54 RXE_TCE Error Status Register on page 159.","TCE: 10,12",Fatal
 62,Reserved,RWHS,0,Reserved,,
-63,"LEM FIR Internal Parity Error PCI Clock Domain SCOM Error",RWHS,0,"Parity error on the LEM FIR has occurred. This sig- nal is from inside the local FIR macro logic. The SCOM error is asserted from a source signal external to the PHB4. It indicates there was an SCOM state machine error during a register opera- tion.","Direct, not from trap",Fatal
+63,"LEM FIR Internal Parity Error PCI Clock Domain SCOM Error",RWHS,0,"Parity error on the LEM FIR has occurred. This signal is from inside the local FIR macro logic. The SCOM error is asserted from a source signal external to the PHB4. It indicates there was an SCOM state machine error during a register operation.","Direct, not from trap",Fatal

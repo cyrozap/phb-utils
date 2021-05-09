@@ -1,32 +1,32 @@
 Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 0,AIB Command Invalid,RW1CHS,0,"The command field of an incoming AIB packet contains a command not recognized as valid by the PHB4. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
 1,Reserved,RW1CHS,0,"Reserved, but implemented for future use.",Fatal
-2,"AIB Address Decode Error – No BAR Match",RW1CHS,0,"The address field of an incoming AIB packet matches none of the address regions supported by PHB4. This means the address decode missed all enabled MBT entries, does not target internal reg- ister space, and is not a peer-to-peer write. The TXE Log Registers 0 and 1 will contain the AIB command header.",INF
+2,"AIB Address Decode Error – No BAR Match",RW1CHS,0,"The address field of an incoming AIB packet matches none of the address regions supported by PHB4. This means the address decode missed all enabled MBT entries, does not target internal register space, and is not a peer-to-peer write. The TXE Log Registers 0 and 1 will contain the AIB command header.",INF
 3,AIB Size Invalid,RW1CHS,0,"The Size field of an incoming AIB packet is not valid. PHB4 supports the following lengths for commands with data: 1-8, 16, 32, 64, 128 bytes. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
 4,"AIB Cmd Ctrls Parity Error",RW1CHS,0,"Parity on the Control signals associated with the AIB Command Bus is not valid. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
 5,"AIB Data Ctrls Parity Error",RW1CHS,0,"Parity on the Control signals associated with the AIB Data Bus is not valid. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
 06:07,Reserved,RW1CHS,0,"Reserved, but implemented for future use.",Fatal
 8,AIB Alignment Error,RW1CHS,0,"The size field ≥ 8 of an incoming AIB packet is not on a naturally aligned address. All AIB packets with sizes equal or greater than 8 must be naturally aligned. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
-9,"AIB Cmd Bus Parity Error",RW1CHS,0,"Parity on the AIB Command Bus is not valid. Bits <32:47> of TXE Log Register 1 will contain the parity error vec- tor.",Fatal
+9,"AIB Cmd Bus Parity Error",RW1CHS,0,"Parity on the AIB Command Bus is not valid. Bits <32:47> of TXE Log Register 1 will contain the parity error vector.",Fatal
 10,"AIB Data Bus UE ECC Error",RW1CHS,0,"UE ECC detected on the AIB Data Bus. If the MMIO targets the link, the PHB4 will set the BLIF signal - etu_pcie_blif_out_dat_err, so the packet will get nullified. Bits <48:63> of TXE Log Register 1 will contain the Syndrome and error vector information.",Fatal
 11,"AIB Data Ctrls Sequence Error",RW1CHS,0,"The Data Control signals were in some illegal sequence state. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
 12,"AIB Data Bus CE ECC Error",RW1CHS,0,"CE ECC detected on the AIB Data Bus. Bits <48:63> of TXE Log Register 1 will contain the Syndrome and error vector information.",INF
-13,"TCE Read Response DAT_ERR Indication",RW1CHS,0,"The PHB4 received a TCE Read Response, and the DAT_ERR sig- nals were set to discard the packet. The packet will be discarded and eventually this will trigger a TCE timeout error.",Fatal
+13,"TCE Read Response DAT_ERR Indication",RW1CHS,0,"The PHB4 received a TCE Read Response, and the DAT_ERR signals were set to discard the packet. The packet will be discarded and eventually this will trigger a TCE timeout error.",Fatal
 14,"AIB Command Credits Error",RW1CHS,0,"A command was received, and the command credit count for that channel was zero. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
 15,AIB Data Credits Error,RW1CHS,0,"A command with data was received, and the data credit count for that channel was zero. The TXE Log Registers 0 and 1 will contain the AIB command header.",Fatal
 16,"BLIF Controls Parity Error",RW1CHS,0,"The BLIF outbound interface control signals (credit or ready) parity check failed.",Fatal
 17,"CFG Write Error CA or UR response",RW1CHS,0,"The PCIe logic received a Completion with CA or UR response for the current CFG Write command. The CONFIG_ADDR and CONFIG_DATA registers will contain the information about the current CFG command.","ER (SINGLE)"
 18,"BLIF Forward Progress Timeout",RW1CHS,0,"A timeout has occurred on BLIF interface. This will occur when the PCIe can make no forward progress on TXE MMIO request packets.",Fatal
-19,"MMIO RD Pending Error",RW1CHS,0,"The PHB4 received another MMIO Read Req while one is still pend- ing. A request is considered pending when a credit for the request has not been returned over AIB.",Fatal
+19,"MMIO RD Pending Error",RW1CHS,0,"The PHB4 received another MMIO Read Req while one is still pending. A request is considered pending when a credit for the request has not been returned over AIB.",Fatal
 20,"MMIO WR Pending Error",RW1CHS,0,"The PHB4 received another MMIO Write while one is still pending. A command is considered pending when a credit for the command has not been returned over AIB.",Fatal
 21,"MMIO CFG Pending Error",RW1CHS,0,"The PHB4 received another CFG command while one is still pending. PHB4 can only service one CFG command at a time. A command is considered pending when a credit for the command has not been returned over AIB.",Fatal
 22,"MMIO Write DAT_ERR Indication",RW1CHS,0,"The PHB4 received a MMIO Write command, and the DAT_ERR signals were set to discard the packet. The PHB4 will set the BLIF signal -etu_pcie_blif_out_dat_err, so the packet will get nullified.",Fatal
-23,CI Store Data Fifo Error,RW1CHS,0,"The CI Store data fifo took a fatal error. This includes underflow/over- flow, internal parity or entry valid error. Log0 will contain details of the specific error.",Fatal
+23,CI Store Data Fifo Error,RW1CHS,0,"The CI Store data fifo took a fatal error. This includes underflow/overflow, internal parity or entry valid error. Log0 will contain details of the specific error.",Fatal
 24,"CFG Enable Error, RRB",RW1CHS,0,A CFG access was attempted but the Enable bit was not set.,INF
 25,CFG Size Error,RW1CHS,0,"A CFG access was attempted with an illegal size. Only lengths of 1-4 bytes are valid. See description of the CONFIG_DATA register page 69 for valid size/address combinations.",INF
 26,"CFG Bus Address Error",RW1CHS,0,"A CFG access was attempted and at least one of the following is true: •The BUS/DEV fields in the CONFIG_ADDR register are out of bounds. •A CFG access was attempted while the cores are reset (PGRESET active). •A CFG access was attempted while the PHB4 is fenced.",INF
 27,CFG Link Down Error,RW1CHS,0,"A CFG access was attempted but the PCIe link is currently in the “down” state. The access can be from SCOM or AIB.",INF
-28,"PAPR TXE Injection Error Triggered (AIB/MMIO operation)",RW1CHS,0,"The condition set up by the PAPR Error Injection Registers triggered its intended condition to inject an TXE error (for an AIB/MMIO opera- tion). This is more of a status than an error, but it can be treated like a normal error.","ER (SINGLE)"
+28,"PAPR TXE Injection Error Triggered (AIB/MMIO operation)",RW1CHS,0,"The condition set up by the PAPR Error Injection Registers triggered its intended condition to inject an TXE error (for an AIB/MMIO operation). This is more of a status than an error, but it can be treated like a normal error.","ER (SINGLE)"
 29,"CFG Write Request Timeout",RW1CHS,0,"The timeout has occurred for a pending CFG Write request. CFG Read requests will be covered by the PCT timeout timer.",INF
 30,"PAPR TXE Injection Error Triggered (PCI CFG operation)",RW1CHS,0,"The condition set up by the PAPR Error Injection Registers triggered its intended condition to inject an TXE error (for PCI CFG operation). This is more of a status than an error, but it can be treated like a normal error.","ER (SINGLE)"
 31:35,Reserved,RW1CHS,0,"Reserved, but implemented for future use.",Fatal
@@ -42,16 +42,16 @@ Bit,Field Mnemonic,Type,"Reset Value",Description,"Error Class"
 45,"MMIO Domain Table (MDT) Stage Valid Error",RW1CHS,0,"An internal stage valid error was detected by the MMIO Domain Table logic.",Fatal
 46,"AIB Data Special Uncorrectable Error (SUE)",RW1CHS,0,"A 'Special' uncorrectable ECC (SUE) error was indicated on the AIB data received from the PB block. The PB LEM FIR will provide details on why the SUE was forwarded. If the MMIO targets the link, the PHB4 will set the BLIF signal -etu_pcie_blif_out_dat_err, so the packet will get nullified.",INF*
 47,"MMIO Domain Table (MDT) Read Pipe Error",RW1CHS,0,"A fatal error occurred while accessing the MMIO Domain Table logic. This includes overflow/underflow, data parity, and valid errors.",Fatal
-48,"P2P Store Data Fifo Error",RW1CHS,0,"The P2P Store data fifo took a fatal error. This includes under- flow/overflow, internal parity or entry valid error. Log0 will contain details of the specific error.",Fatal
+48,"P2P Store Data Fifo Error",RW1CHS,0,"The P2P Store data fifo took a fatal error. This includes underflow/overflow, internal parity or entry valid error. Log0 will contain details of the specific error.",Fatal
 49,"EPAT Table Parity Error",RW1CHS,0,"A parity error was detected by the End Point Active Table (EPAT) logic.",Fatal
 50,MMIO Cmd Parity Error,RW1CHS,0,A parity error has occurred in the MMIO command pipeline.,Fatal
-51,"BLIF1 Register Parity Error",RW1CHS,0,"A parity error has occurred in the register that drives the BLIF Com- mand for CI loads and stores.",Fatal
-52,"P2P1 Register Parity Error",RW1CHS,0,"A parity error has occurred in the register that drives the BLIF Com- mand for P2P stores.",Fatal
+51,"BLIF1 Register Parity Error",RW1CHS,0,"A parity error has occurred in the register that drives the BLIF Command for CI loads and stores.",Fatal
+52,"P2P1 Register Parity Error",RW1CHS,0,"A parity error has occurred in the register that drives the BLIF Command for P2P stores.",Fatal
 53,P2P WR Pending Error,RW1CHS,0,"The ETU received another P2P Write while one is still pending. A command is considered pending when a credit for the command has not been returned over AIB.",Fatal
 54,CRW Onehot Error,RW1CHS,0,"The Credit Return Write State Machine signaled a state (onehot) error.",Fatal
 55,CRW Pending Error,RW1CHS,0,The CRW SM issued another CRW Write while one is still pending.,Fatal
-56,RRB Parity Error,RW1CHS,0,"A parity error was detected in the RRB block for a register imple- mented in the TXE macro.",Fatal
-57,"RRB Size/Alignment Error",RW1CHS,0,"A read/write access to a register had incorrect size or address align- ment.",Fatal
+56,RRB Parity Error,RW1CHS,0,"A parity error was detected in the RRB block for a register implemented in the TXE macro.",Fatal
+57,"RRB Size/Alignment Error",RW1CHS,0,"A read/write access to a register had incorrect size or address alignment.",Fatal
 58,s_bad_addr_e_q,RW1CHS,0,"TXE local error, internal register bad address error.",Fatal
 59,s_req_size_align_e_q,RW1CHS,0,"TXE local error, internal register read / write access to a register had incorrect size or address alignment.",Fatal
 60:63,Reserved,RO,0,Reserved.,

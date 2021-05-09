@@ -18,9 +18,16 @@
 #
 
 
+import csv
 import fileinput
+import glob
 import re
 import struct
+import textwrap
+from pathlib import Path
+
+
+REGISTERS = {}
 
 
 def extract_bits_be(data):
@@ -53,7 +60,28 @@ def pr_field_bits_be(fields, data):
     assert len(fields) == len(data)
     for i in range(len(data)):
         bits = extract_bits_be(data[i])
+        field_defs = REGISTERS.get(fields[0])
         print("  {}: {}".format(fields[i], bits))
+        if field_defs:
+            for field in field_defs:
+                start = field['start']
+                end = field['end']
+                if start == end:
+                    if start in bits:
+                        print("    [{:>2d}]: {}".format(start, field['name']))
+                        desc_lines = textwrap.wrap(field['desc'], width=72)
+                        for line in desc_lines:
+                            print("      {}".format(line))
+                else:
+                    intersection = set(range(start, end+1)).intersection(set(bits))
+                    value = 0
+                    for bit in intersection:
+                        value |= 1 << (end - bit)
+                    if field['name'] != "Reserved" or value != 0:
+                        print("    [{:>2d}:{:>2d}]: {}: 0x{:x}".format(start, end, field['name'], value))
+                        desc_lines = textwrap.wrap(field['desc'], width=72)
+                        for line in desc_lines:
+                            print("      {}".format(line))
 
 def pr_brdg_ctl(name, data):
     fields = ("Bridge Control",)
@@ -116,6 +144,34 @@ def pr_pe_ab(name, data):
         print("  MMIO {} addr [0:47]: 0x{:012x}".format("load" if tt == 4 else "store", addr))
 
 def main():
+    # Load the register bit information.
+    for csv_filename in glob.iglob('./data/*/*.csv'):
+        reg_name = Path(csv_filename).parts[-1].split('.')[0]
+        if reg_name not in REGISTERS.keys():
+            REGISTERS[reg_name] = []
+        with open(csv_filename, newline='') as csv_file:
+            csv_reader = csv.DictReader(csv_file)
+            for row in csv_reader:
+                # Assume it's from the PHB4 spec.
+                bits_f, name_f, desc_f = "Bit", "Field Mnemonic", "Description"
+                if "Bits" in row.keys():
+                    # This is from the IODA2 spec.
+                    bits_f, name_f, desc_f = row.keys()
+                bits = [int(x) for x in row[bits_f].split(':')]
+                start = bits[0]
+                if len(bits) > 1:
+                    end = bits[1]
+                else:
+                    end = bits[0]
+                name = row[name_f]
+                desc = row[desc_f]
+                REGISTERS[reg_name].append({
+                    'start': start,
+                    'end': end,
+                    'name': name,
+                    'desc': desc,
+                })
+
     printers = {
         'brdgCtl': pr_brdg_ctl,
         'RootSts': pr_root_sts,

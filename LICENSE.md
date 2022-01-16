@@ -1,4 +1,4 @@
-Unless otherwise noted, everything in this repo is licenced under the GNU
+Unless otherwise noted, everything in this repo is licensed under the GNU
 General Public License, version 3 or later. See [COPYING.txt][copying] for
 details.
 

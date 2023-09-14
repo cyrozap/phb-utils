@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
 # explain-eeh.py - PHB EEH error explainer
-# Copyright (C) 2019-2021  Forest Crossman <cyrozap@gmail.com>
+# Copyright (C) 2019-2021, 2023  Forest Crossman <cyrozap@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -133,12 +133,17 @@ def pr_pe_ab(name, data):
     print("{}:".format(name))
     pr_field_bits_be(fields, data[:1])
     tt = extract_bit_field_be(data[0], 5, 3)
-    is_dma = tt in (0, 2)
+    tt_dma_map = {
+        0: "write",
+        2: "read",
+        3: "read response",
+    }
+    is_dma = tt in tt_dma_map.keys()
     is_mmio = tt in (4, 5)
     pe_b = int(data[1], 16)
     if is_dma:
         addr = (pe_b & 0x1fffffffffffffff)
-        print("  DMA {} addr [60:0]: 0x{:016x}".format("write" if tt == 0 else "read", addr))
+        print("  DMA {} addr [60:0]: 0x{:016x}".format(tt_dma_map[tt], addr))
     if is_mmio:
         addr = (pe_b & 0x0000ffffffffffff)
         print("  MMIO {} addr [0:47]: 0x{:012x}".format("load" if tt == 4 else "store", addr))
